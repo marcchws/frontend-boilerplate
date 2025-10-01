@@ -14,9 +14,6 @@ This is a modern frontend boilerplate built with Next.js 15 (App Router), React 
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
 
-### Adding Components
-- `npx shadcn@latest add [component-name]` - Add Shadcn/UI components
-
 ### Stack Installation
 - `/install-stack` - Custom command to install dependencies and create folder structure
 
@@ -46,18 +43,18 @@ This project uses a **dual state management approach**:
 
 ```
 src/
-├── app/              # Next.js App Router (routes, layouts, pages)
-├── components/       # Reusable React components
-│   └── ui/          # Shadcn/UI components (auto-generated)
-├── constants/        # Application constants
-├── context/          # React Context providers
-├── hooks/            # Custom React hooks
-├── lib/              # Utilities and configurations
-├── mocks/            # Mock data for development
+├── app/              # Routes and pages (page.tsx, layout.tsx, loading.tsx, error.tsx)
+├── components/       # Reusable UI components (buttons, cards, forms, etc)
+│   └── ui/          # Shadcn/UI components (auto-generated via MCP)
+├── constants/        # Static values (API URLs, config values, enums)
+├── context/          # React Context providers (theme, auth, etc)
+├── hooks/            # Custom React hooks (data fetching, form handling, side effects)
+├── lib/              # Utilities and helpers (formatters, validators, API clients)
+├── mocks/            # Mock data for development and testing
 ├── store/            # Redux store
-│   ├── features/     # Redux Toolkit slices
-│   └── sagas/        # Redux Saga handlers
-└── types/            # TypeScript type definitions
+│   ├── features/     # Redux slices (user state, app settings, UI state)
+│   └── sagas/        # Side effects handlers (complex async flows, workflows)
+└── types/            # TypeScript interfaces and types (API responses, entities, props)
 ```
 
 ### Path Aliases
@@ -89,6 +86,12 @@ TypeScript and Shadcn/UI are configured with the following aliases:
 - `next.config.ts` - Next.js configuration (currently minimal)
 - `src/app/globals.css` - Global styles and Tailwind directives
 
+## Shadcn/UI Component Management
+
+- Use MCP tools (`mcp__shadcn__*`) to search, view, and install components
+- Registry configurations are in `components.json` - MCP tools automatically access them
+- Use MCP tools to get installation commands, then execute with Bash
+
 ## Development Notes
 
 ### Next.js App Router
@@ -101,4 +104,4 @@ TypeScript and Shadcn/UI are configured with the following aliases:
 - Target: ES2017
 
 ### Fonts
-- Geist Sans and Geist Mono are pre-configured in `src/app/layout.tsx`
+- Inter is configured in `src/app/layout.tsx`
